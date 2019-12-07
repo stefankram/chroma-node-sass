@@ -1,7 +1,7 @@
 {
-  "name": "chroma-node-sass",
-  "version": "0.0.0",
-  "description": "A Sass wrapper for the chroma.js library",
+  "name": "@stefankram/chroma-node-sass",
+  "version": "0.0.1",
+  "description": "A node-sass wrapper for the chroma.js library",
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
