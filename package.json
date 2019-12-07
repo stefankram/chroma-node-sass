@@ -1,0 +1,42 @@
+{
+  "name": "chroma-node-sass",
+  "version": "0.0.0",
+  "description": "A Sass wrapper for the chroma.js library",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "test": "cross-env TS_NODE_FILES=true mocha -r ts-node/register -c --recursive \"src/**/*.spec.ts\"",
+    "test:coverage": "nyc npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefankram/chroma-node-sass.git"
+  },
+  "author": "Stefan Kramreither",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stefankram/chroma-node-sass/issues"
+  },
+  "homepage": "https://github.com/stefankram/chroma-node-sass#readme",
+  "dependencies": {
+    "chroma-js": "^2.1.0",
+    "node-sass": "^4.13.0",
+    "node-sass-utils": "^1.1.2",
+    "typescript": "^3.7.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.6",
+    "@types/mocha": "^5.2.7",
+    "@types/node-sass": "^4.11.0",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
+    "chai": "^4.2.0",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
+    "ts-node": "^8.5.4"
+  }
+}
