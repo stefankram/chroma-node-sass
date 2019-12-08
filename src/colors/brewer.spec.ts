@@ -1,8 +1,7 @@
 import { expect } from 'chai';
 import sass from 'node-sass';
-import sassUtils from '../sass-utils';
 import brewer from './brewer';
-import { sassToHex } from '../converters';
+import { sassListToHex } from '../converters';
 
 describe('colors/brewer', () => {
   const palette = sass.types.String('OrRd');
@@ -20,9 +19,7 @@ describe('colors/brewer', () => {
   let actualColors: Array<string>;
 
   before(() => {
-    actualColors = sassUtils
-      .castToJs(brewer(palette))
-      .map((color: sass.types.Color) => sassToHex(color));
+    actualColors = sassListToHex(brewer(palette));
   });
 
   it('should return a list of the correct colors', () => {
