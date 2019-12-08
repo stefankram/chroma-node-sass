@@ -1,5 +1,6 @@
 import chromaJs from 'chroma-js';
 import sass from 'node-sass';
+import sassUtils from '../sass-utils';
 import { rgbaToSass } from '../converters';
 
 export default (palette: sass.types.String): sass.types.List => {
@@ -7,10 +8,5 @@ export default (palette: sass.types.String): sass.types.List => {
     .brewer[palette.getValue()]
     .map((color: string) => rgbaToSass(chromaJs(color).rgba()));
 
-  const list = sass.types.List(colors.length);
-  for (let i = 0; i < colors.length; i += 1) {
-    list.setValue(i, colors[i]);
-  }
-
-  return list;
+  return sassUtils.castToSass(colors);
 };

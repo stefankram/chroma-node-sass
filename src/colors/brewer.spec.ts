@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import sass from 'node-sass';
+import sassUtils from '../sass-utils';
 import brewer from './brewer';
 import { sassToHex } from '../converters';
 
@@ -16,15 +17,15 @@ describe('colors/brewer', () => {
     '#b30000',
     '#7f0000',
   ];
-  let actualColors: sass.types.List;
+  let actualColors: Array<string>;
 
   before(() => {
-    actualColors = brewer(palette);
+    actualColors = sassUtils
+      .castToJs(brewer(palette))
+      .map((color: sass.types.Color) => sassToHex(color));
   });
 
-  it('should return a list of colors', () => {
-    for (let i = 0; i < actualColors.getLength(); i += 1) {
-      expect(sassToHex(actualColors.getValue(i) as sass.types.Color)).to.equal(expectedColors[i]);
-    }
+  it('should return a list of the correct colors', () => {
+    expect(actualColors).to.deep.equal(expectedColors);
   });
 });

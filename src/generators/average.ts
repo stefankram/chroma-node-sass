@@ -1,5 +1,6 @@
 import chromaJs from 'chroma-js';
 import sass from 'node-sass';
+import sassUtils from '../sass-utils';
 import { rgbaToSass, sassToHex } from '../converters';
 
 export default (
@@ -7,15 +8,12 @@ export default (
   mode: sass.types.String,
   weights: sass.types.List,
 ): sass.types.Color => {
-  const parsedColors: Array<string> = [];
-  const parsedWeights: Array<number> = [];
-
-  for (let i = 0; i < colors.getLength(); i += 1) {
-    parsedColors[i] = sassToHex(colors.getValue(i) as sass.types.Color);
-  }
-  for (let i = 0; i < weights.getLength(); i += 1) {
-    parsedWeights[i] = (weights.getValue(i) as sass.types.Number).getValue();
-  }
+  const parsedColors = sassUtils
+    .castToJs(colors)
+    .map((color: sass.types.Color) => sassToHex(color));
+  const parsedWeights = sassUtils
+    .castToJs(weights)
+    .map((weight: { value: number }) => weight.value);
 
   return rgbaToSass(
     chromaJs
