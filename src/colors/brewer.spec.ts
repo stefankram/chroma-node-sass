@@ -16,7 +16,7 @@ describe('colors/brewer', () => {
     '#b30000',
     '#7f0000',
   ];
-  let actualColors: Array<string>;
+  let actualColors: string[];
 
   before(() => {
     actualColors = sassListToHex(brewer(palette));

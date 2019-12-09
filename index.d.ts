@@ -5,10 +5,10 @@ type RGBA = [number, number, number, number];
 
 interface ScaleOptions {
   colors: number;
-  domain?: Array<number>;
+  domain?: number[];
   mode?: string;
   gamma?: number;
   correctLightness?: boolean;
-  padding?: number | Array<number>;
+  padding?: number | number[];
   bezier?: boolean;
 }

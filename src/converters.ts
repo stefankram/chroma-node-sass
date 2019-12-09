@@ -16,8 +16,14 @@ export function sassToHex(color: sass.types.Color): string {
   return chromaJs(color.getR(), color.getG(), color.getB(), color.getA()).hex();
 }
 
-export function sassListToHex(list: sass.types.List): Array<string> {
+export function sassListToHex(list: sass.types.List): string[] {
   return sassUtils
     .castToJs(list)
     .map((color: sass.types.Color) => sassToHex(color));
+}
+
+export function sassListToNumbers(list: sass.types.List): number[] {
+  return sassUtils
+    .castToJs(list)
+    .map((num: { value: number }) => num.value);
 }
